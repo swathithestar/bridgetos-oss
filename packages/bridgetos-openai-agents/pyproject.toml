@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bridgetos-openai-agents"
+version = "0.1.0"
+description = "openai-agents SDK integration for BridgetOS — automatic observation emission and governance enforcement"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "BridgetOS"}]
+dependencies = [
+  "bridgetos>=0.1.0",
+  "openai-agents>=0.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0.0",
+  "pytest-mock>=3.0.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bridgetos_openai_agents"]
+
+[tool.uv.sources]
+bridgetos = { path = "../bridgetos-sdk-python", editable = true }

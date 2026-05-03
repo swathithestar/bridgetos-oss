@@ -9,6 +9,7 @@ Open-source integration layer for BridgetOS — the runtime behavioral identity 
 | `bridgetos-schema` | JSON Schema for the observation data contract | MIT |
 | `bridgetos-sdk-python` | Python client for sending observations | MIT |
 | `bridgetos-langchain` | LangChain callback that emits BridgetOS observations | MIT |
+| `bridgetos-openai-agents` | openai-agents SDK adapter that emits BridgetOS observations | MIT |
 | `bridgetos-test-harness` | Synthetic agents + drift scenarios for stress-testing identity monitors | Apache 2.0 |
 
 ## What's not here
