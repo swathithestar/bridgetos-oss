@@ -11,17 +11,31 @@ from typing import Any
 from agents import FunctionSpanData, GenerationSpanData, TracingProcessor
 from agents.tracing import Trace
 
-from bridgetos import Client, Observation, ObservationContent, ObservationContext, ObservationTelemetry, ToolCall
+from bridgetos import (
+    Client,
+    Observation,
+    ObservationContent,
+    ObservationContext,
+    ObservationTelemetry,
+    ToolCall,
+)
 
 logger = logging.getLogger(__name__)
 
-_ISO_FORMATS = ("%Y-%m-%dT%H:%M:%S.%fZ", "%Y-%m-%dT%H:%M:%SZ", "%Y-%m-%dT%H:%M:%S.%f%z", "%Y-%m-%dT%H:%M:%S%z")
+_ISO_FORMATS = (
+    "%Y-%m-%dT%H:%M:%S.%fZ",
+    "%Y-%m-%dT%H:%M:%SZ",
+    "%Y-%m-%dT%H:%M:%S.%f%z",
+    "%Y-%m-%dT%H:%M:%S%z",
+)
 
 
 class BridgetOSGovernanceException(RuntimeError):
     """Raised when BridgetOS has locked the agent's governance state."""
 
-    def __init__(self, message: str = "Agent execution halted by BridgetOS governance lock.") -> None:
+    def __init__(
+        self, message: str = "Agent execution halted by BridgetOS governance lock."
+    ) -> None:
         super().__init__(message)
 
 
@@ -79,14 +93,24 @@ class BridgetOSTraceProcessor(TracingProcessor):
                 latency_ms=latency,
                 tokens_input=tokens_input,
                 tokens_output=tokens_output,
-            ) if (latency is not None or tokens_input is not None or tokens_output is not None) else None,
+            )
+            if (
+                latency is not None
+                or tokens_input is not None
+                or tokens_output is not None
+            )
+            else None,
         )
         self._submit(observation)
 
     def _handle_function(self, span: Any) -> None:
         data: FunctionSpanData = span.span_data
         output_str = str(data.output) if data.output is not None else None
-        text = f"[Tool: {data.name}] {output_str}" if output_str is not None else f"[Tool: {data.name}]"
+        text = (
+            f"[Tool: {data.name}] {output_str}"
+            if output_str is not None
+            else f"[Tool: {data.name}]"
+        )
 
         observation = Observation(
             agent_id=self.agent_id,

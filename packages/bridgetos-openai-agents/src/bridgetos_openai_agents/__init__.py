@@ -7,10 +7,16 @@ from bridgetos import Client
 
 from .processor import BridgetOSGovernanceException, BridgetOSTraceProcessor
 
-__all__ = ["BridgetOSTraceProcessor", "BridgetOSGovernanceException", "instrument_openai_agents"]
+__all__ = [
+    "BridgetOSTraceProcessor",
+    "BridgetOSGovernanceException",
+    "instrument_openai_agents",
+]
 
 
-def instrument_openai_agents(bridgetos_client: Client, agent_id: str = "openai-agents") -> None:
+def instrument_openai_agents(
+    bridgetos_client: Client, agent_id: str = "openai-agents"
+) -> None:
     """Register the BridgetOS trace processor with the openai-agents SDK."""
     from agents.tracing import add_trace_processor
 
