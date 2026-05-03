@@ -23,6 +23,6 @@ SOFTWARE.
 ---
 
 Note: This license applies to the integration packages in this repository
-(bridgetos-schema, bridgetos-sdk-python, bridgetos-langchain). The
-bridgetos-test-harness package is licensed under Apache 2.0 (see its LICENSE
+(bridgetos-schema, bridgetos-sdk-python, bridgetos-langchain, bridgetos-openai).
+The bridgetos-test-harness package is licensed under Apache 2.0 (see its LICENSE
 file). The BridgetOS analytic core is proprietary and not included.

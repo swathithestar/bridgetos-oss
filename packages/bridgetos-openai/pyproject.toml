@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bridgetos-openai"
+version = "0.1.0"
+description = "OpenAI Assistants and Responses API integration for BridgetOS — automatic observation emission and governance enforcement"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "BridgetOS"}]
+dependencies = [
+  "bridgetos>=0.1.0",
+  "openai>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7.0.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/bridgetos_openai"]
+
+[tool.uv.sources]
+bridgetos = { path = "../bridgetos-sdk-python", editable = true }
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "ruff>=0.15.12",
+]
